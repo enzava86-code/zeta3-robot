@@ -25,12 +25,12 @@ function Home() {
 
   return (
     <>
-      {/* HEADER MINIMALISTA */}
-      <header className="header">
-        <div className="container">
-          <nav className="nav">
-            <a href="#" className="logo">
-              <svg className="icon" viewBox="0 0 24 24">
+      {/* RESPONSIVE HEADER WITH TAILWIND */}
+      <header className="fixed top-0 w-full z-50 bg-black/5 backdrop-blur-lg border-b border-white/10 h-16 md:h-20">
+        <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
+          <nav className="flex items-center justify-between h-full flex-wrap md:flex-nowrap">
+            <a href="#" className="flex items-center gap-2 font-bold text-lg md:text-xl text-white order-1">
+              <svg className="w-5 h-5 md:w-6 md:h-6" viewBox="0 0 24 24">
                 <defs>
                   <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
                     <stop offset="0%" style={{stopColor:'#5b21b6'}}/>
@@ -42,10 +42,14 @@ function Home() {
               Zeta3
             </a>
             
-            <ul className="nav-links">
+            <ul className="flex gap-2 md:gap-4 lg:gap-8 text-sm md:text-base order-3 w-full md:w-auto justify-center md:justify-start mt-2 md:mt-0 flex-wrap md:flex-nowrap">
               {NAV_LINKS.map(({ id, label }) => (
                 <li key={id}>
-                  <a href={`#${id}`} onClick={(e) => { e.preventDefault(); scrollToSection(id); }}>
+                  <a 
+                    href={`#${id}`} 
+                    onClick={(e) => { e.preventDefault(); scrollToSection(id); }}
+                    className="text-gray-300 hover:text-white transition-colors duration-200 px-2 py-1 rounded-md hover:bg-white/10"
+                  >
                     {label}
                   </a>
                 </li>
@@ -54,7 +58,7 @@ function Home() {
             
             <a 
               href="#contacto" 
-              className="btn btn-primary"
+              className="bg-gradient-to-r from-purple-600 to-purple-700 text-white px-4 md:px-6 py-2 md:py-3 rounded-lg text-sm md:text-base font-semibold hover:from-purple-700 hover:to-purple-800 transition-all duration-300 transform hover:scale-105 order-2"
               onClick={(e) => { e.preventDefault(); scrollToSection('contacto'); }}
             >
               Auditoría Gratuita
@@ -63,9 +67,9 @@ function Home() {
         </div>
       </header>
 
-      {/* HERO SECTION CON ESTILO ELEGANTE */}
-      <section id="inicio" className="acme-hero">
-        <div className="acme-hero-container">
+      {/* RESPONSIVE HERO SECTION */}
+      <section id="inicio" className="min-h-screen bg-black relative overflow-hidden flex items-center justify-center">
+        <div className="relative w-full h-screen flex items-center justify-center">
           {/* Background Starfield */}
           <div className="absolute inset-0">
             {isClient && (
@@ -85,43 +89,43 @@ function Home() {
           <div className="absolute inset-0 bg-black/20"></div>
           
           {/* Main Content */}
-          <div className="relative z-10 flex flex-col items-center h-full text-center max-w-5xl mx-auto px-8">
+          <div className="relative z-10 flex flex-col items-center h-full justify-center text-center max-w-sm sm:max-w-md md:max-w-2xl lg:max-w-4xl xl:max-w-5xl mx-auto px-4 md:px-6 lg:px-8 pt-16 md:pt-20">
             
-            {/* Trust Badge - visible debajo del header */}
-            <div className="hero-badge mb-8">
-              <div className="flex items-center gap-2">
+            {/* Trust Badge - responsive */}
+            <div className="bg-purple-600/10 backdrop-blur-lg border border-purple-600/20 rounded-full px-4 md:px-6 py-2 md:py-3 mb-6 md:mb-8">
+              <div className="flex items-center gap-2 text-sm md:text-base">
                 <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-                <span>Director de IT en activo • 40M€ facturación</span>
+                <span className="text-white font-medium">Director de IT en activo • 40M€ facturación</span>
               </div>
             </div>
             
-            {/* Main Headline - título completo con subtítulo */}
-            <div className="mb-8">
-              <h1 className="hero-main-title mb-2">
-                Liberamos <span className="text-highlight">20+ horas semanales</span><br />
-                con IA y automatización
+            {/* Main Headline - responsive typography */}
+            <div className="mb-6 md:mb-8">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight text-white mb-3 md:mb-4">
+                Liberamos <span className="bg-gradient-to-r from-purple-400 to-purple-600 bg-clip-text text-transparent">20+ horas semanales</span><br className="hidden sm:block" />
+                <span className="block sm:inline">con IA y automatización</span>
               </h1>
               
-              {/* Subtitle - parte del título principal */}
-              <p className="hero-subtitle">
+              {/* Subtitle - responsive */}
+              <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-300 italic">
                 (sin contratar más personal)
               </p>
             </div>
             
-            {/* Elegant line - separador visual */}
-            <div className="acme-line mb-12"></div>
+            {/* Elegant line - responsive */}
+            <div className="w-32 sm:w-48 md:w-64 h-px bg-gradient-to-r from-transparent via-white to-transparent opacity-70 mb-6 md:mb-8"></div>
             
-            {/* Value proposition - párrafo independiente */}
-            <p className="hero-description">
-              Como Director de Organización & IT en una empresa de 40M€ de facturación anual,<br />
-              <strong>replico estos sistemas probados</strong> en negocios que quieren crecer sin contratar más personal.
+            {/* Value proposition - responsive paragraph */}
+            <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-200 max-w-2xl md:max-w-4xl mx-auto leading-relaxed mb-6 md:mb-8">
+              Como Director de Organización & IT en una empresa de 40M€ de facturación anual,<br className="hidden md:block" />
+              <strong className="text-white font-semibold">replico estos sistemas probados</strong> en negocios que quieren crecer sin contratar más personal.
             </p>
 
-            {/* CTA Section */}
-            <div className="hero-cta-container mb-6">
+            {/* CTA Section - responsive */}
+            <div className="mb-6 md:mb-8 w-full max-w-xs sm:max-w-sm md:max-w-md">
               <button
                 onClick={() => scrollToSection('contacto')}
-                className="hero-primary-cta"
+                className="w-full bg-gradient-to-r from-purple-600 to-purple-700 text-white px-6 md:px-8 lg:px-10 py-3 md:py-4 lg:py-5 rounded-lg text-sm md:text-base lg:text-lg font-semibold hover:from-purple-700 hover:to-purple-800 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center justify-center gap-3"
               >
                 <span>Auditoría Gratuita de Procesos</span>
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -130,20 +134,20 @@ function Home() {
               </button>
             </div>
             
-            {/* Trust indicators - con respiración del fondo */}
-            <div className="hero-trust-indicators">
-              <div className="flex items-center gap-8 text-sm text-gray-400">
+            {/* Trust indicators - responsive */}
+            <div className="mt-2">
+              <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-8 text-xs sm:text-sm text-gray-400">
                 <div className="flex items-center gap-2">
-                  <svg className="w-4 h-4 text-green-400" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="w-4 h-4 text-green-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
-                  <span>30 min • Gratis</span>
+                  <span className="whitespace-nowrap">30 min • Gratis</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="w-4 h-4 text-white flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z" clipRule="evenodd" />
                   </svg>
-                  <span>Máximo 3 proyectos simultáneos</span>
+                  <span className="text-center sm:text-left">Máximo 3 proyectos simultáneos</span>
                 </div>
               </div>
             </div>
@@ -151,40 +155,40 @@ function Home() {
         </div>
       </section>
 
-      {/* PROBLEMAS SECTION */}
-      <section id="problemas" className="section section-light">
-        <div className="container">
-          <div className="text-center mb-16">
-            <h2 className="mb-6">Si te reconoces aquí, tu empresa tiene fugas de rentabilidad.</h2>
-            <p className="text-lg" style={{ color: '#475569' }}>
+      {/* RESPONSIVE PROBLEMS SECTION */}
+      <section id="problemas" className="py-12 md:py-16 lg:py-20 xl:py-24 bg-gradient-to-b from-gray-50 to-gray-100">
+        <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
+          <div className="text-center mb-12 md:mb-16">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold text-gray-900 mb-4 md:mb-6">Si te reconoces aquí, tu empresa tiene fugas de rentabilidad.</h2>
+            <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
               Estos no son los problemas reales. Son los síntomas de un caos operativo que no puedes ver.
             </p>
           </div>
 
-          <div className="grid grid-3 mb-16">
-            <div className="card card-light text-center">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mb-12 md:mb-16">
+            <div className="bg-white rounded-xl p-6 md:p-8 text-center shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-100">
               <div className="mb-6">
                 <div className="flex justify-center mb-4">
-                  <div style={{ padding: 'var(--space-4)', borderRadius: '50%', background: '#ddd6fe', color: 'var(--accent-primary)' }}>
-                    <svg className="icon-lg" viewBox="0 0 24 24">
+                  <div className="p-4 rounded-full bg-purple-100 text-purple-600">
+                    <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                       <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
                     </svg>
                   </div>
                 </div>
-                <h3 style={{ color: 'var(--accent-primary)', marginBottom: 'var(--space-2)' }}>Pierdes clientes</h3>
+                <h3 className="text-purple-600 font-semibold text-lg md:text-xl mb-2">Pierdes clientes</h3>
               </div>
               
-              <h4 className="mb-4">Respondes cuando ya contrató a tu competencia</h4>
-              <p style={{ color: '#475569' }}>
+              <h4 className="text-gray-900 font-medium text-base md:text-lg mb-4">Respondes cuando ya contrató a tu competencia</h4>
+              <p className="text-gray-600 text-sm md:text-base leading-relaxed">
                 Un lead llega el viernes, lo ves el lunes, respondes el martes. Mientras tanto, contrató a tu competencia que respondió en 10 minutos.
               </p>
             </div>
 
-            <div className="card card-light text-center">
+            <div className="bg-white rounded-xl p-6 md:p-8 text-center shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-100">
               <div className="mb-6">
                 <div className="flex justify-center mb-4">
-                  <div style={{ padding: 'var(--space-4)', borderRadius: '50%', background: '#e9d5ff', color: 'var(--accent-secondary)' }}>
-                    <svg className="icon-lg" viewBox="0 0 24 24">
+                  <div className="p-4 rounded-full bg-purple-100 text-purple-600">
+                    <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                       <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
                       <polyline points="14,2 14,8 20,8"/>
                       <line x1="16" y1="13" x2="8" y2="13"/>
@@ -193,31 +197,31 @@ function Home() {
                     </svg>
                   </div>
                 </div>
-                <h3 style={{ color: 'var(--accent-secondary)', marginBottom: 'var(--space-2)' }}>Cash flow roto</h3>
+                <h3 className="text-purple-600 font-semibold text-lg md:text-xl mb-2">Cash flow roto</h3>
               </div>
               
-              <h4 className="mb-4">Facturas cuando te acuerdas, no cuando deberías</h4>
-              <p style={{ color: '#475569' }}>
+              <h4 className="text-gray-900 font-medium text-base md:text-lg mb-4">Facturas cuando te acuerdas, no cuando deberías</h4>
+              <p className="text-gray-600 text-sm md:text-base leading-relaxed">
                 Terminas un trabajo y la factura sale 1-2 semanas después. Cash flow roto porque facturas cuando te acordás, no cuando deberías.
               </p>
             </div>
 
-            <div className="card card-light text-center">
+            <div className="bg-white rounded-xl p-6 md:p-8 text-center shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-100">
               <div className="mb-6">
                 <div className="flex justify-center mb-4">
-                  <div style={{ padding: 'var(--space-4)', borderRadius: '50%', background: '#fed7aa', color: 'var(--accent-gold)' }}>
-                    <svg className="icon-lg" viewBox="0 0 24 24">
+                  <div className="p-4 rounded-full bg-orange-100 text-orange-600">
+                    <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                       <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
                       <path d="M13 8H7"/>
                       <path d="M17 12H7"/>
                     </svg>
                   </div>
                 </div>
-                <h3 style={{ color: 'var(--accent-gold)', marginBottom: 'var(--space-2)' }}>Eres el cuello de botella</h3>
+                <h3 className="text-orange-600 font-semibold text-lg md:text-xl mb-2">Eres el cuello de botella</h3>
               </div>
               
-              <h4 className="mb-4">Tu equipo te pregunta lo mismo 20 veces</h4>
-              <p style={{ color: '#475569' }}>
+              <h4 className="text-gray-900 font-medium text-base md:text-lg mb-4">Tu equipo te pregunta lo mismo 20 veces</h4>
+              <p className="text-gray-600 text-sm md:text-base leading-relaxed">
                 Cada empleado te interrumpe 5 veces al día con preguntas que ya respondiste. Eres el cuello de botella de tu propia empresa.
               </p>
             </div>
@@ -440,15 +444,15 @@ function Home() {
         </div>
       </section>
 
-      {/* CONTACTO SECTION */}
-      <section id="contacto" className="section section-light" style={{ paddingTop: 'calc(61px + var(--space-16))' }}>
-        <div className="container">
-          <div className="grid grid-2" style={{ gap: 'var(--space-16)' }}>
-            <div className="card card-light">
-              <div style={{ width: '100%', minHeight: '450px', position: 'relative', overflow: 'hidden' }}>
+      {/* RESPONSIVE CONTACT SECTION */}
+      <section id="contacto" className="py-12 md:py-16 lg:py-20 xl:py-24 bg-gradient-to-b from-gray-50 to-gray-100" style={{ paddingTop: 'calc(64px + 3rem)' }}>
+        <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16">
+            <div className="bg-white rounded-xl p-6 md:p-8 shadow-sm border border-gray-100">
+              <div className="w-full min-h-[400px] md:min-h-[450px] relative overflow-hidden">
                 <iframe
                   src="https://link.apisystem.tech/widget/form/3I4sPFRNXatz6LGwtDry"
-                  style={{ width: '100%', height: '450px', border: 'none', borderRadius: '8px', marginTop: '-30px' }}
+                  className="w-full h-[400px] md:h-[450px] border-none rounded-lg -mt-4 md:-mt-8"
                   id="inline-3I4sPFRNXatz6LGwtDry" 
                   data-layout='{"id":"INLINE"}'
                   data-trigger-type="alwaysShow"
@@ -466,16 +470,16 @@ function Home() {
               </div>
             </div>
             
-            <div>
-              <h3 className="mb-8">En 30 minutos sabrás exactamente:</h3>
+            <div className="order-first lg:order-last">
+              <h3 className="text-xl sm:text-2xl md:text-3xl font-semibold text-gray-900 mb-6 md:mb-8 text-center lg:text-left">En 30 minutos sabrás exactamente:</h3>
               
-              <div className="mb-8">
+              <div className="mb-6 md:mb-8">
                 {AUDIT_BENEFITS.map((item, index) => (
-                  <div key={index} className="flex items-start gap-4 mb-4">
-                    <svg className="icon" style={{ color: '#10b981', marginTop: '0.125rem' }} viewBox="0 0 24 24">
+                  <div key={index} className="flex items-start gap-3 md:gap-4 mb-3 md:mb-4">
+                    <svg className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                       <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
                     </svg>
-                    <span className="text-lg">{item}</span>
+                    <span className="text-base md:text-lg text-gray-700 leading-relaxed">{item}</span>
                   </div>
                 ))}
               </div>
